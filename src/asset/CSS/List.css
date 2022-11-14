@@ -1,0 +1,38 @@
+.nav{
+    display: flex;
+    flex-direction: column;
+}
+.backArrow{
+   padding-right: 20px;    
+}
+
+.cartItem{
+    border-radius: 15px;
+    background: linear-gradient( rgb(192, 188, 188),rgb(221, 216, 217)) ;
+    min-height: 550px;
+}
+.EmptyCart{
+    display: flex;
+    justify-content: center;
+    margin-top: 30%;
+}
+.cartProduct{
+    background-color: #ffff;
+    /* width: 180px; */
+   box-sizing: border-box;
+}
+.cartTitle{
+    font-size: 25px;
+    font-weight: 600;
+    text-align: center;
+}
+.cartDescription{
+    font-size: 15px;
+    font-weight: 200;
+    text-align: center;
+}
+.cartPrice{
+    font-size: 20px;
+    font-weight: 300;
+    text-align: center;
+}

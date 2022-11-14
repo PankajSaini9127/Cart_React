@@ -1,0 +1,21 @@
+
+.product_id{
+   padding-top: 90px;
+}
+.product_img{
+    border-radius: 15px;
+    
+}
+.productitem{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.title{
+    font-size: 25px;
+    font-weight: 600;
+}
+.description{
+    font-size: 25px;
+    font-weight: 500;
+}

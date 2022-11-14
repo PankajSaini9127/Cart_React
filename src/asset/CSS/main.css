@@ -1,0 +1,37 @@
+.backArrow{
+    background-color: azure;
+}
+
+.no_item{
+    display: flex;
+    justify-content: center;
+}
+
+
+.cart_item{
+    background-color: red;
+    color: #ffff;
+    margin: 0;
+    padding: 0;
+    border-radius: 30px;
+    max-width: 20px;
+    /* width: 7px;/ */
+    padding: 0px 5px;
+    font-size: 13px;
+    position: relative;
+    top: -30px;
+    left: 19px;
+
+    }
+
+.Shopping_list{
+    
+    height: 450px;
+    padding-left: 15px;
+    padding-right: 15px;
+
+    background-color: rgb(230, 222, 222);
+    border-radius: 15px;
+    box-shadow: 1px;
+    
+}
