@@ -1,4 +1,6 @@
 export const reducer = (state, action) => {
+
+  // Remove Item From Cart
   if (action.type === "REMOVE_ITEM") {
     return {
       ...state,
@@ -7,6 +9,8 @@ export const reducer = (state, action) => {
       }),
     };
   }
+
+  //Clear Cart
   if (action.type === "CLEAR_CART") {
     return {
       ...state,
@@ -16,6 +20,7 @@ export const reducer = (state, action) => {
     };
   }
 
+   //Increment Cart Item Quantity
   if (action.type === "INCREMENT") {
     let updateItem = state.item.map((curElem) => {
       if (curElem.id === action.id) {
@@ -29,6 +34,7 @@ export const reducer = (state, action) => {
     return { ...state, item: updateItem };
   }
 
+  //Decrement Cart Item Quantity
   if (action.type === "DECREMENT") {
     let updateItem = state.item.map((curElem) => {
       if (curElem.id === action.id) {
@@ -45,8 +51,10 @@ export const reducer = (state, action) => {
     return { ...state, item: updateItem };
   }
 
+
+  // Get Total Amount & Total Item In Cart
   if(action.type === "GET_TOTAL"){
-      let { totalItem,totalAmount ,itemAmount } = state.item.reduce(
+      let { totalItem,totalAmount  } = state.item.reduce(
         (accum, curVal)=>{
                let {price, quantity} = curVal;
                accum.totalAmount += price * quantity;
@@ -58,9 +66,20 @@ export const reducer = (state, action) => {
       return { ...state , totalItem, totalAmount}
   }
 
+  //Add item to cart from list
   if(action.type === "HANDLE_ADD_CART"){
-    console.log("hihihihi")
-    return {...state}
+  
+    let itemAdd = {};
+    state.cartItem.map((curVal)=>{
+            if(action.id === curVal.id){
+              itemAdd = curVal
+              return itemAdd
+            }     
+    }) 
+    return {...state, item : [ ...state.item, itemAdd]}
+        
   }
+ 
+ 
   return state;
 };

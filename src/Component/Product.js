@@ -1,15 +1,19 @@
+import React, { useContext } from "react";
+
+//MUI
 import {
   Grid,
-  TextField,
   Typography,
   Box,
   ButtonGroup,
   Button,
 } from "@mui/material";
-import React, { useContext } from "react";
 
+
+//Custom CSS
 import "../asset/CSS/product.css";
 
+// Context API Data
 import { Data } from "../App";
 
 //cons
@@ -21,7 +25,7 @@ import CurrencyRupeeIcon from "@mui/icons-material/CurrencyRupee";
 export default function Product(props) {
   const { id, title, img, price, description, quantity } = props.data;
 
-  const { removeItem, handleIncrement, handleDecrement,itemAmount } = useContext(Data);
+  const { removeItem, handleIncrement, handleDecrement } = useContext(Data);
 
   return (
     <>
@@ -31,6 +35,7 @@ export default function Product(props) {
         sx={{ margin: 2, textAlign: "center", justifycontent: "space-around" }}
       >
        
+        {/* Product Image */}
         <Grid item md={2} xs={12}>
           <Box
             className="product_img"
@@ -43,20 +48,28 @@ export default function Product(props) {
             src={img}
           />
         </Grid>
+
+        {/* Product Title */}
         <Grid item md={2} xs={10} className="productitem">
           <Typography variant="h6" className="title">
             {title}
           </Typography>
         </Grid>
+
+        {/* Product Discription */}
         <Grid item md={2} xs={10} className="productitem">
           <Typography variant="h6" className="description">
             {description}
           </Typography>
         </Grid>
-        <Grid item md={2} xs={10} className="productitem">
-          
+
+        {/* Product Price */}
+        <Grid item md={1.5} xs={10} className="productitem">
           {price}
+          <CurrencyRupeeIcon fontSize="small"/>
         </Grid>
+
+        {/* Product Quantity */}
         <Grid item md={2} xs={10} className="productitem">
           <ButtonGroup>
             <Button
@@ -80,7 +93,9 @@ export default function Product(props) {
             </Button>
           </ButtonGroup>
         </Grid>
-     <Grid  item md={2} xs={10} >
+
+        {/* Product Delete Button */}
+     <Grid  item md={2} xs={8} className="productitem">
         <Button
           color="error"
           onClick={() => {

@@ -1,84 +1,90 @@
-import React, {createContext, useReducer, useEffect} from 'react'
-import Router from './Component/Router';
-import {reducer} from './Component/reducer'
+import React, { createContext, useReducer, useEffect } from "react";
 
-import {data} from './Component/Data'
+//JSON Data File
+import { data } from "./Component/Data";
 
- const Data = createContext();
+//Reducer Function For useReducer
+import { reducer } from "./Component/reducer";
 
- const intialState ={
-    item: data,
-    totalItem : 0,
-    totalAmount : 0,
-    itemAmount : 0
- }
+//Component
+import Router from "./Component/Router";
 
+//Context
+const Data = createContext();
 
+//State initilation
+const intialState = {
+  item: [],
+  cartItem: data,
+  totalItem: 0,
+  totalAmount: 0,
+  itemAmount: 0,
+};
 
 function App() {
-
-  // const [value, setValue]= useState(data);
-
-  const [state, dispatch] = useReducer(reducer, intialState)
+  const [state, dispatch] = useReducer(reducer, intialState);
 
   //delete item from cart
-  const removeItem = (id)=>{
+  const removeItem = (id) => {
     return dispatch({
-     type: "REMOVE_ITEM",
-     payload : id
-    })
-  }
+      type: "REMOVE_ITEM",
+      payload: id,
+    });
+  };
 
-// clear cart
-const clearCart = ()=>{
-  return dispatch({
-    type: "CLEAR_CART"
-  })
-}
+  // clear cart
+  const clearCart = () => {
+    return dispatch({
+      type: "CLEAR_CART",
+    });
+  };
 
-//Increment Quantity 
-const handleIncrement = (id)=>{
-  return dispatch ({
-    type:"INCREMENT",
-    id:id
-  })
-}
+  //Increment Quantity
+  const handleIncrement = (id) => {
+    return dispatch({
+      type: "INCREMENT",
+      id: id,
+    });
+  };
 
-//Decrement Quantity 
-const handleDecrement = (id)=>{
-  return dispatch ({
-    type:"DECREMENT",
-    id:id
-  })
-}
+  //Decrement Quantity
+  const handleDecrement = (id) => {
+    return dispatch({
+      type: "DECREMENT",
+      id: id,
+    });
+  };
 
-// get total 
-useEffect(() => {
- return dispatch({
-  type: "GET_TOTAL"
- })
-}, [state.item])
+  // get total
+  useEffect(() => {
+    return dispatch({
+      type: "GET_TOTAL",
+    });
+  }, [state.item]);
 
-
-// add to cart
-const handleAddCart = (id)=>{
-  return dispatch({
-    type: "HANDLE_ADD_CART",
-    id: id
-  })
-}
+  // add to cart
+  const handleAddCart = (id) => {
+    return dispatch({
+      type: "HANDLE_ADD_CART",
+      id: id,
+    });
+  };
 
   return (
-    <Data.Provider value={{...state, removeItem, clearCart,handleIncrement, handleDecrement, handleAddCart}} >
-      
-         <Router/>
-      
+    <Data.Provider
+      value={{
+        ...state,
+        removeItem,
+        clearCart,
+        handleIncrement,
+        handleDecrement,
+        handleAddCart,
+      }}
+    >
+      <Router />
     </Data.Provider>
-
-    
-   
   );
 }
 
 export default App;
-export { Data}
+export { Data };

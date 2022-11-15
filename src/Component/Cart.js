@@ -1,24 +1,31 @@
 import React, { useContext } from "react";
+
+//MUI
 import { Button, Grid, Typography } from "@mui/material";
+
+// ROuter
+import { Link } from "react-router-dom";
+
+// Context API
+import { Data } from "../App";
 
 //scroll bar
 import { Scrollbars } from 'react-custom-scrollbars';
 
-import { Data } from "../App";
-
 //icon
 import CurrencyRupeeIcon from "@mui/icons-material/CurrencyRupee";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 
 //css
 import "../asset/CSS/main.css";
-import Product from "./Product";
 
-import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+// Component For rendering Item
+import Product from "./Product";
 
 export default function Main() {
   const { item, totalAmount, totalItem } = useContext(Data);
-
+ 
   return (
     <>
       <Grid container sx={{ justifyContent: "space-around", marginTop: 3 }}>
@@ -26,7 +33,8 @@ export default function Main() {
           <Grid container sx={{ justifyContent: "space-between" }}>
             <Grid item xs={3} className="nav">
               <Typography className="backArrow">
-                <ArrowBackIcon />
+                <Link to="/"><ArrowBackIcon /></Link>
+                
               </Typography>
               <Typography>Shopping Cart</Typography>
             </Grid>
