@@ -12,9 +12,18 @@ import Router from "./Component/Router";
 //Context
 const Data = createContext();
 
+const getData = ()=>{
+  let data = localStorage.getItem("cartItem");
+  if(data === []){
+    return [];
+  }else{
+    return JSON.parse(data)
+  }
+}
+
 //State initilation
 const intialState = {
-  item: [],
+  item: getData(),
   cartItem: data,
   totalItem: 0,
   totalAmount: 0,
@@ -69,6 +78,13 @@ function App() {
       id: id,
     });
   };
+
+  //set cartItem in localStorage
+  useEffect(() => {
+    localStorage.setItem("cartItem", JSON.stringify(state.item))
+  
+  }, [state.item])
+  
 
   return (
     <Data.Provider

@@ -1,3 +1,5 @@
+
+
 export const reducer = (state, action) => {
 
   // Remove Item From Cart
@@ -75,7 +77,9 @@ export const reducer = (state, action) => {
               itemAdd = curVal
               return itemAdd
             }     
-    }) 
+    })
+    
+    
     return {...state, item : [ ...state.item, itemAdd]}
         
   }
